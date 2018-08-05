@@ -5,6 +5,7 @@ class Store {
   @observable playersCounter = 0
   @observable rounds = 0
   @observable dollarPerCard = 1
+  @observable mode = 1
 
   @observable messages = [];
 
@@ -18,7 +19,8 @@ class Store {
   createPlayer = () => {
     this.players.push(new Player({
       id: this.playersCounter,
-      name: `Player ${this.playersCounter}` 
+      name: `Player ${this.playersCounter}`,
+      players: this.players
     }))
     this.playersCounter += 1;
   }
@@ -35,15 +37,21 @@ class Store {
 class Player {
   @observable id;
   @observable name;
-  @observable records;
-  @computed get totalPNL() {
-    return Object.keys(this.records).reduce((sum, key) => sum + this.records[key], 0)
-  }
+  @observable records = [];
+  @observable players;
+  @computed get pnl() {
+      return Object.keys(this.records).reduce((sum, round) => {
+        return sum + this.players
+        .filter((player) => (player.id !== this.id) && (player.records[round] != null))
+        .reduce((sum, player) => sum + player.records[round] - this.records[round], 0)
+    }, 0)
+  };
 
   constructor(playerObj){
     this.id = playerObj.id;
     this.name = playerObj.name;
     this.records = {};
+    this.players = playerObj.players;
   }
 
   addRecord(rounds, cards) {

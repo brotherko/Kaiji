@@ -11,22 +11,30 @@ export default class RecordCreate extends Component {
     };
   }
 
+  clearFormData = () => {
+    this.setState((prevState) => {
+      let obj = prevState.formData;
+      Object.keys(obj).map((key) => {
+        obj[key] = ''
+      })
+      return {
+        formData: obj
+      }
+    })
+  }
+
   createRecords = event => {
     event.preventDefault();
+
     const players = this.props.store.players;
     const formData = this.state.formData;
-    const recordsSum = Object.keys(formData).reduce((sum, key) => sum + formData[key], 0);
-    if (recordsSum === 0) {
-        players.map(player => {
-            const cards = formData[player.id] ? formData[player.id] : 0;
-            return player.addRecord(this.props.store.rounds, cards);
-        });
-        this.props.store.rounds += 1;
-    } else {
-      this.props.store.addMessage({
-        content: "gg"
-      });
-    }
+    players.map(player => {
+      if(typeof(formData[player.id]) === 'number'){
+        player.addRecord(this.props.store.rounds, formData[player.id]);
+      }
+    });
+    this.clearFormData();
+    this.props.store.rounds += 1;
   };
 
   changeHandler = event => {
@@ -57,6 +65,7 @@ export default class RecordCreate extends Component {
                         className="control"
                         name={player.id}
                         onChange={this.changeHandler}
+                        value={this.state.formData[player.id]}
                         />
                     </div>
                   </div>

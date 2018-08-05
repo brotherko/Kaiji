@@ -11,13 +11,13 @@ export default class RecordShow extends Component {
       <tr>
         <td>{round}</td>
         {this.props.store.players.map((player) => (
-          <td>{player.records[round] || 0}</td>
+          <td>{typeof(player.records[round] === 'number') ? player.records[round] : '//'}</td>
         ))}
       </tr>
     ))
     const totalPNL = 
     this.props.store.players.map((player) => (
-      <td>{player.totalPNL}</td>
+      <td>{player.pnl}</td>
     ))
 
     return (
@@ -34,6 +34,7 @@ export default class RecordShow extends Component {
               <table className="table">
                 <thead>
                   <tr>
+                    <td>Round</td>
                     {this.props.store.players.map((player) => (
                       <td>{player.name}</td>
                     ))}
@@ -44,6 +45,7 @@ export default class RecordShow extends Component {
                 </tbody>
                 <tfoot>
                   <tr>
+                    <td>PNL</td>
                     {totalPNL}
                   </tr>
                 </tfoot>
