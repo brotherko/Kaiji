@@ -5,10 +5,6 @@ import '../App.css'
 @inject("store")
 @observer 
 export default class RecordShow extends Component {
-  constructor(props) {
-    super(props)
-  }
-  
   render() {
     const records = 
     [...Array(this.props.store.rounds)].map((_, round) => (

@@ -8,10 +8,6 @@ import { observer, inject } from 'mobx-react';
 @inject("store")
 @observer
 class App extends Component {
-  constructor(){
-    super();
-  }
-
   render() {
     return (
       <div>

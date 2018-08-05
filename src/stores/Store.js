@@ -9,7 +9,7 @@ class Store {
   @observable messages = [];
 
   getPlayer = (id) => {
-    id = parseInt(id)
+    id = parseInt(id, 10)
     return this.players.find((player) => {
       return player.id === id
     })
@@ -41,9 +41,9 @@ class Player {
   }
 
   constructor(playerObj){
-    this.id = playerObj.id,
-    this.name = playerObj.name,
-    this.records = {}
+    this.id = playerObj.id;
+    this.name = playerObj.name;
+    this.records = {};
   }
 
   addRecord(rounds, cards) {
@@ -65,4 +65,4 @@ class Message {
   }
 }
 
-export default new Store;
+export default new Store();

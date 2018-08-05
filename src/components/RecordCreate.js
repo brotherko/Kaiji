@@ -15,13 +15,11 @@ export default class RecordCreate extends Component {
     event.preventDefault();
     const players = this.props.store.players;
     const formData = this.state.formData;
-    const recordsSum = Object.keys(formData).reduce((sum, key) => {
-      return sum + formData[key];
-    }, 0);
+    const recordsSum = Object.keys(formData).reduce((sum, key) => sum + formData[key], 0);
     if (recordsSum === 0) {
         players.map(player => {
             const cards = formData[player.id] ? formData[player.id] : 0;
-            player.addRecord(this.props.store.rounds, cards);
+            return player.addRecord(this.props.store.rounds, cards);
         });
         this.props.store.rounds += 1;
     } else {
@@ -36,7 +34,7 @@ export default class RecordCreate extends Component {
     this.setState(prevState => ({
       formData: {
         ...prevState.formData,
-        [target.name]: parseInt(target.value)
+        [target.name]: parseInt(target.value, 10)
       }
     }));
   };

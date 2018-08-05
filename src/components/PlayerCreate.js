@@ -4,9 +4,6 @@ import { observer, inject } from 'mobx-react';
 @inject('store')
 @observer
 export default class PlayerCreate extends Component {
-  constructor(props) {
-    super(props)
-  }
   changeHandler = (player, event) => {
     player.update({
       name: event.target.value

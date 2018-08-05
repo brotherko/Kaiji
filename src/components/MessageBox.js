@@ -4,9 +4,6 @@ import { inject, observer } from 'mobx-react';
 @inject("store")
 @observer
 export default class MessageBox extends Component {
-  constructor(props){
-    super(props)
-  }
   render() {
     const message = this.props.store.messages.map((message) => (
       <div>{message.type}: {message.content}</div>
