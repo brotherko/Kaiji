@@ -26,7 +26,7 @@ export default class RecordShow extends Component {
     ))
 
     return (
-      <section className="hero">
+      <section id="listing-records" className="hero">
         <div className="hero-body">
           <div className="container">
             <h1 className="title">

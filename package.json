@@ -6,14 +6,14 @@
     "bulma": "^0.7.1",
     "mobx": "^5.0.3",
     "mobx-react": "^5.2.3",
+    "node-sass": "^4.9.3",
     "react": "^16.4.1",
     "react-app-rewire-mobx": "^1.0.8",
+    "react-app-rewire-scss": "^1.0.2",
     "react-dom": "^16.4.1",
-    "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "sass-loader": "^7.1.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -22,6 +22,7 @@
     "eject": "react-app-rewired eject"
   },
   "devDependencies": {
+    "react-app-rewire-sass": "^1.2.3",
     "react-app-rewired": "^1.5.2"
   }
 }

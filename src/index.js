@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import 'bulma/css/bulma.css'
+import './index.scss';
+import 'bulma/bulma.sass'
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import Stores from './stores/Stores';

@@ -25,7 +25,7 @@ export default class RecordCreate extends Component {
     const { players } = this.playerStore;
     const { fields } = this.uiStore.recordCreateFormdata;
     return (
-      <section className="hero">
+      <section id="manage-records" className="hero">
         <div className="hero-body">
           <div className="container">
             <h1 className="title">Create Records</h1>
