@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import ManagePlayers from './components/ManagePlayers';
 import ManageRecords from './components/ManageRecords';
 import Statistics from './components/Statistics';
+import Settings from './components/Settings';
 import MessageBox from './components/MessageBox';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -32,6 +33,9 @@ class App extends Component {
         }
         {uiStore.currentScreen == 'statistics' &&
         <Statistics />
+        }
+        {uiStore.currentScreen == 'settings' &&
+        <Settings />
         }
       </div>
     );
