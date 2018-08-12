@@ -1,18 +1,13 @@
 import { observable } from "mobx";
-import Player from './models/Player';
-import Message from './models/Message';
+import Player from '../models/Player';
 
-class Store {
+export default class PlayerStore {
   @observable players = []
   @observable playersCounter = 0
-  @observable rounds = 0
-  @observable rules = {
-    dollarPerCard: 1,
-    doubleChao: true,
-    tripleChao: true
-  }
 
-  @observable messages = [];
+  constructor(rootStore){
+    this.rootStore = rootStore
+  }
 
   getPlayer = (id) => {
     id = parseInt(id, 10)
@@ -22,6 +17,8 @@ class Store {
   }
 
   createPlayer = () => {
+    this.rootStore.uiStore.recordCreateFormdata.add(this.playersCounter)
+
     this.players.push(new Player({
       id: this.playersCounter,
       name: `Player ${this.playersCounter}`,
@@ -30,13 +27,4 @@ class Store {
     this.playersCounter += 1;
   }
 
-  addMessage = (message) => {
-    this.messages = [new Message(message)]
-  }
-
-  clearMessage = () => {
-    this.messages = [];
-  }
 }
-
-export default new Store();

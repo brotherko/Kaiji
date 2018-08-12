@@ -5,13 +5,14 @@ import PlayerCreate from './components/PlayerCreate';
 import MessageBox from './components/MessageBox';
 import { observer, inject } from 'mobx-react';
 
-@inject("store")
+@inject("stores")
 @observer
 class App extends Component {
   render() {
+  console.log(this.props.stores);
     return (
       <div>
-        {this.props.store.messages.length > 0 &&
+        {this.props.stores.uiStore.messages.length > 0 &&
           <MessageBox />
         }
         <PlayerCreate />
