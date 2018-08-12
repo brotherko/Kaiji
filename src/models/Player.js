@@ -14,7 +14,7 @@ export default class Player {
         record*2 :
         record))
   }
-  @computed get pnl() {
+  @computed get score() {
     return Object
     .keys(this.records)
     .reduce((sum, round) => {
@@ -25,7 +25,9 @@ export default class Player {
       }, 0)
     }, 0)
   };
-
+  @computed get pnl() {
+    return this.score * this.rules.dollarsPerCard;
+  }
   constructor(playerObj){
     this.id = playerObj.id;
     this.name = playerObj.name;

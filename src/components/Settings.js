@@ -9,7 +9,7 @@ export default class Settings extends Component {
   render() {
     const { gameStore } = this.props.stores;
     return (
-      <section id="listing-records" className="hero is-light">
+      <section id="settings" className="hero is-light">
         <div className="hero-body">
           <div className="container">
             <h1 className="title">

@@ -21,6 +21,9 @@ export default class RecordShow extends Component {
     const name = playerStore.players.map((player) => (
       <td key={player.id}>{player.name}</td>
     ))
+    const score = playerStore.players.map((player) => (
+      <td key={player.id}>{player.score}</td>
+    ))
     const pnl = playerStore.players.map((player) => (
       <td key={player.id}>{player.pnl}</td>
     ))
@@ -47,6 +50,10 @@ export default class RecordShow extends Component {
                   {records}
                 </tbody>
                 <tfoot>
+                  <tr>
+                    <td>Score</td>
+                    {score}
+                  </tr>
                   <tr>
                     <td>PNL</td>
                     {pnl}
