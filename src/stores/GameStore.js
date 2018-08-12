@@ -5,7 +5,8 @@ export default class GameStore {
   @observable rules = {
     dollarsPerCard: 1,
     doubleChao: true,
-    tripleChao: true
+    tripleChao: true,
+    scoring: 'winner'
   }
 
   constructor(rootStore){
@@ -19,6 +20,7 @@ export default class GameStore {
   toggleRule = (ruleName) => {
     this.rules[ruleName] = !this.rules[ruleName];
   }
+
   createRecords = () => {
     const fields = this.rootStore.uiStore.recordCreateFormdata.fields;
 
@@ -27,7 +29,7 @@ export default class GameStore {
     });
 
     this.rootStore.uiStore.recordCreateFormdata.clear(0);
-
+    this.rootStore.uiStore.setCurrentScreen('statistics');
     this.nextRound();
   };
 }

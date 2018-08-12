@@ -8,7 +8,7 @@ export default class Toggle extends Component {
   }
   render() {
     return (
-      <div class="toggle-button">
+      <div className="toggle-button">
           <input onClick={this.props.onClick} type="checkbox" id={this.props.name} checked={this.props.value} />
           <label for={this.props.name}><i></i></label>
       </div>

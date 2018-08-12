@@ -15,7 +15,8 @@ export default class Player {
         record))
   }
   @computed get score() {
-    return Object
+    return (this.rules.scoring === 'diff') ?
+    Object
     .keys(this.records)
     .reduce((sum, round) => {
       return sum + this.root.players
@@ -23,8 +24,15 @@ export default class Player {
       .reduce((sum, player) => {
         return sum + player.records[round] - this.records[round]
       }, 0)
+    }, 0) :
+    Object
+    .keys(this.records)
+    .filter((key) => this.records[key] === 0)
+    .reduce((sum, key) => {
+      return sum + this.root.players.reduce((sum, player) => sum + player.records[key], 0)
     }, 0)
   };
+
   @computed get pnl() {
     return this.score * this.rules.dollarsPerCard;
   }
