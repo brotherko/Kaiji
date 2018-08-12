@@ -23,7 +23,7 @@ export default class GameStore {
       player.addRecord(this.rounds, parseInt(fields[player.id]));
     });
 
-    this.rootStore.uiStore.recordCreateFormdata.clear();
+    this.rootStore.uiStore.recordCreateFormdata.clear(0);
 
     this.nextRound();
   };

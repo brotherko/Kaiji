@@ -17,7 +17,7 @@ export default class PlayerStore {
   }
 
   createPlayer = () => {
-    this.rootStore.uiStore.recordCreateFormdata.add(this.playersCounter)
+    this.rootStore.uiStore.recordCreateFormdata.add(this.playersCounter, 0)
 
     this.players.push(new Player({
       id: this.playersCounter,

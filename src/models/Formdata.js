@@ -11,9 +11,9 @@ export default class Formdata {
     this.fields[key] = newValue;
   }
 
-  clear = () => {
+  clear = (clearValue = '') => {
     Object.keys(this.fields).map((key) => {
-      this.update(key, '')
+      this.update(key, clearValue)
     })
   }
 }

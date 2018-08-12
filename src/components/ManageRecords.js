@@ -24,6 +24,9 @@ export default class RecordCreate extends Component {
   render() {
     const { players } = this.playerStore;
     const { fields } = this.uiStore.recordCreateFormdata;
+    const options = [...Array(14)].map((_, number) => (
+      <option value={number}>{number}</option>
+    ))
     return (
       <section id="manage-records" className="hero is-info">
         <div className="hero-body">
@@ -36,13 +39,11 @@ export default class RecordCreate extends Component {
                   <div key={player.id} className="field">
                     <div className="label">{player.name}</div>
                     <div className="control">
-                        <input
-                        type="number"
-                        className="control"
-                        name={player.id}
-                        onChange={this.changeHandler}
-                        value={fields[player.id]}
-                        />
+                      <div class="select">
+                        <select onChange={this.changeHandler} name={player.id} value={fields[player.id]}>
+                          {options}
+                        </select>
+                      </div>
                     </div>
                   </div>
                 ))}

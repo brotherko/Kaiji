@@ -2,5 +2,22 @@
   border-radius: 0px !important;
 }
 
+.tabs a {
+  // border-top-width: 0px !important;
+  // border-bottom-width: 0px !important;
+  border: none !important;
+  &.is-primary {
+    background-color: #00d1b2 !important;
+  }
+  &.is-info {
+    background-color: #209cee !important;
+  }
+  &.is-warning {
+    background-color: hsl(48, 100%, 67%) !important;
+  }
+  &.is-light {
+    background-color: whitesmoke !important;
+  }
+}
 body {
 }

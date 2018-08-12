@@ -9,25 +9,25 @@ export default class Nav extends Component {
     const { uiStore } = this.props.stores;
     return (
       <div>
-        <div class="tabs is-toggle is-fullwidth">
+        <div className="tabs is-toggle is-fullwidth">
           <ul>
-            <li class="is-active">
-              <a onClick={() => uiStore.setCurrentScreen('managePlayers')}>
+            <li className="is-active">
+              <a className="is-primary" onClick={() => uiStore.setCurrentScreen('managePlayers')}>
                 <span class="icon is-small"><FontAwesomeIcon icon="users" /></span>
               </a>
             </li>
             <li>
-              <a onClick={() => uiStore.setCurrentScreen('manageRecords')}>
+              <a className="is-info" onClick={() => uiStore.setCurrentScreen('manageRecords')}>
                 <span class="icon is-small"><FontAwesomeIcon icon="file-alt" /></span>
               </a>
             </li>
             <li>
-              <a onClick={() => uiStore.setCurrentScreen('statistics')}>
+              <a className="is-warning" onClick={() => uiStore.setCurrentScreen('statistics')}>
                 <span class="icon is-small"><FontAwesomeIcon icon="chart-bar" /></span>
               </a>
             </li>
             <li>
-              <a onClick={() => uiStore.setCurrentScreen('settings')}>
+              <a className="is-light" onClick={() => uiStore.setCurrentScreen('settings')}>
                 <span class="icon is-small"><FontAwesomeIcon icon="sliders-h" /></span>
               </a>
             </li>
