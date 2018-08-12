@@ -20,6 +20,18 @@
   }
 }
 
+#statistics {
+  .container {
+    overflow: hidden;
+  }
+  .detail-stats {
+    overflow: scroll;
+  }
+  thead {
+    white-space: nowrap;
+  }
+}
+
 #settings {
   .columns {
     align-items: center  

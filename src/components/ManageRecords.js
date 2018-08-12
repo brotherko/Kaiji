@@ -16,7 +16,7 @@ export default class RecordCreate extends Component {
       <option value={number}>{number}</option>
     ))
     return (
-      <section id="manage-records" className="hero is-info">
+      <section id="manage-records" className="hero is-info is-fullheight">
         <div className="hero-body">
           <div className="container">
             <h1 className="title">Create Records</h1>

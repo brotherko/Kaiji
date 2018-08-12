@@ -29,7 +29,7 @@ export default class RecordShow extends Component {
     ))
 
     return (
-      <section id="listing-records" className="hero is-warning">
+      <section id="statistics" className="hero is-warning is-fullheight">
         <div className="hero-body">
           <div className="container">
             <h1 className="title">
@@ -39,27 +39,30 @@ export default class RecordShow extends Component {
               Real time records
             </h2>
             <div className="content">
-              <table className="table is-fullwidth">
-                <thead>
-                  <tr>
-                    <td>Round</td>
-                    {name}
-                  </tr>
-                </thead>
-                <tbody>
-                  {records}
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <td>Score</td>
-                    {score}
-                  </tr>
-                  <tr>
-                    <td>PNL</td>
-                    {pnl}
-                  </tr>
-                </tfoot>
-              </table>
+              <div className="detail-stats">
+                <table className="table is-fullwidth">
+                  <thead>
+                    <tr>
+                      <td>Round</td>
+                      {name}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {records}
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td>Score</td>
+                      {score}
+                    </tr>
+                    <tr>
+                      <td>PNL</td>
+                      {pnl}
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
+
             </div>
           </div>
         </div>
