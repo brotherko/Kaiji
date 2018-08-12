@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
-import RecordCreate from './components/RecordCreate';
-import RecordShow from './components/RecordShow';
-import PlayerCreate from './components/PlayerCreate';
+
+import Nav from './components/Nav';
+import ManagePlayers from './components/ManagePlayers';
+import ManageRecords from './components/ManageRecords';
+import Statistics from './components/Statistics';
 import MessageBox from './components/MessageBox';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
 import { observer, inject } from 'mobx-react';
+
+library.add(fas)
 
 @inject("stores")
 @observer
 class App extends Component {
   render() {
-  console.log(this.props.stores);
+    const { uiStore } = this.props.stores;
     return (
       <div>
         {this.props.stores.uiStore.messages.length > 0 &&
           <MessageBox />
         }
-        <PlayerCreate />
-        <RecordCreate />
-        <RecordShow />
+        <Nav />
+        {uiStore.currentScreen == 'managePlayers' &&
+        <ManagePlayers />
+        }
+        {uiStore.currentScreen == 'manageRecords' &&
+        <ManageRecords />
+        }
+        {uiStore.currentScreen == 'statistics' &&
+        <Statistics />
+        }
       </div>
     );
   }

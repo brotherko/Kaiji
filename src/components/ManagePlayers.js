@@ -12,7 +12,7 @@ export default class PlayerCreate extends Component {
   render() {
     const { players, createPlayer } = this.props.stores.playerStore;
     return (
-      <section id="manage-players" className="hero">
+      <section id="manage-players" className="hero is-primary">
         <div className="hero-body">
           <div className="container">
             <h1 className="title">
