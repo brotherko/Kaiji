@@ -39,7 +39,7 @@ export default class RecordShow extends Component {
               Real time records
             </h2>
             <div className="content">
-              <table className="table">
+              <table className="table is-fullwidth">
                 <thead>
                   <tr>
                     <td>Round</td>

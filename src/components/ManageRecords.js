@@ -6,24 +6,12 @@ import { observer, inject } from "mobx-react";
 export default class RecordCreate extends Component {
   constructor(props) {
     super(props);
-    this.uiStore = this.props.stores.uiStore;
-    this.playerStore = this.props.stores.playerStore;
-    this.gameStore = this.props.stores.gameStore;
   }
-
-  createRecords = (event) => {
-    event.preventDefault();
-    this.gameStore.createRecords();
-  }
-
-  changeHandler = event => {
-    const target = event.target;
-    this.uiStore.recordCreateFormdata.update(target.name, target.value);
-  };
 
   render() {
-    const { players } = this.playerStore;
-    const { fields } = this.uiStore.recordCreateFormdata;
+    const { uiStore, playerStore, gameStore } = this.props.stores;
+    const { fields } = uiStore.recordCreateFormdata;
+
     const options = [...Array(14)].map((_, number) => (
       <option value={number}>{number}</option>
     ))
@@ -35,19 +23,23 @@ export default class RecordCreate extends Component {
             <h2 className="subtitle">Add record to player</h2>
             <div className="content">
               <form onSubmit={this.createRecords}>
-                {players.map(player => (
+                {playerStore.players.map(player => (
                   <div key={player.id} className="field">
                     <div className="label">{player.name}</div>
                     <div className="control">
                       <div class="select">
-                        <select onChange={this.changeHandler} name={player.id} value={fields[player.id]}>
+                        <select onChange={(event) => uiStore.recordCreateFormdata.update(event.target.name, event.target.value)}
+                                name={player.id}
+                                value={fields[player.id]}>
                           {options}
                         </select>
                       </div>
                     </div>
                   </div>
                 ))}
-                  <button className="button">save</button>
+                  <a className="button is-primary is-outlined is-large is-fullwidth is-inverted" onClick={ () => gameStore.createRecords() }>
+                    Save Record
+                  </a>
                 <div>
                 </div>
               </form>

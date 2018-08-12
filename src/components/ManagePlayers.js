@@ -30,9 +30,9 @@ export default class PlayerCreate extends Component {
                   </div>
                 </div>
               )}
-            <button className="button" onClick={ () => createPlayer() }>
-            Add new player
-            </button>
+            <a className="button is-primary is-outlined is-large is-fullwidth is-inverted" onClick={ () => createPlayer() }>
+              New Player
+            </a>
             </div>
           </div>
         </div>
