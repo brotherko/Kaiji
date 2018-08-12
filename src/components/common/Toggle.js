@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
+import { observer } from 'mobx-react';
 
+@observer
 export default class Toggle extends Component {
+  constructor(props){
+    super(props);
+  }
   render() {
     return (
       <div class="toggle-button">
-          <input type="checkbox" id="toggly" />
-          <label for="toggly"><i></i></label>
+          <input onClick={this.props.onClick} type="checkbox" id={this.props.name} checked={this.props.value} />
+          <label for={this.props.name}><i></i></label>
       </div>
     )
   }

@@ -3,7 +3,7 @@ import { observable } from "mobx";
 export default class GameStore {
   @observable rounds = 0
   @observable rules = {
-    dollarPerCard: 1,
+    dollarsPerCard: 1,
     doubleChao: true,
     tripleChao: true
   }
@@ -16,6 +16,9 @@ export default class GameStore {
     this.rounds += 1;
   }
 
+  toggleRule = (ruleName) => {
+    this.rules[ruleName] = !this.rules[ruleName];
+  }
   createRecords = () => {
     const fields = this.rootStore.uiStore.recordCreateFormdata.fields;
 
