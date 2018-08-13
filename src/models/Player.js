@@ -27,9 +27,10 @@ export default class Player {
     }, 0) :
     Object
     .keys(this.records)
-    .filter((key) => this.records[key] === 0)
     .reduce((sum, key) => {
-      return sum + this.root.players.reduce((sum, player) => sum + player.records[key], 0)
+      return sum + ((this.records[key] === 0) ?
+      (this.root.players.reduce((sum, player) => sum + player.records[key], 0)) :
+      -(this.records[key]))
     }, 0)
   };
 
