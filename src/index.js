@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import 'bulma/css/bulma.css'
+import 'bulma/bulma.sass'
+import './index.scss';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import store from './stores/Store';
+import Stores from './stores/Stores';
 import { Provider } from 'mobx-react';
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider stores={new Stores()}>
     <App />
   </Provider>, document.getElementById('root'));
 registerServiceWorker();

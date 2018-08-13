@@ -1,0 +1,11 @@
+version: '2.1'
+
+services:
+  web:
+    image: nginx 
+    ports:
+      - 8080:80
+      - 80:80
+      - 443:443
+    volumes:
+      - ./build:/usr/share/nginx/html/

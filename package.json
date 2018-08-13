@@ -3,17 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
+    "@fortawesome/react-fontawesome": "0.1.0-11",
     "bulma": "^0.7.1",
+    "i": "^0.3.6",
     "mobx": "^5.0.3",
     "mobx-react": "^5.2.3",
+    "node-sass": "^4.9.3",
+    "npm": "^6.3.0",
     "react": "^16.4.1",
     "react-app-rewire-mobx": "^1.0.8",
+    "react-app-rewire-scss": "^1.0.2",
     "react-dom": "^16.4.1",
-    "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "sass-loader": "^7.1.0"
   },
   "scripts": {
     "start": "react-app-rewired start",
@@ -22,6 +27,7 @@
     "eject": "react-app-rewired eject"
   },
   "devDependencies": {
+    "react-app-rewire-sass": "^1.2.3",
     "react-app-rewired": "^1.5.2"
   }
 }
