@@ -23,12 +23,16 @@ export default class PlayerCreate extends Component {
             </h2>
             <div className="content">
               {players.map((player, index) => 
-                <div className="field" key={player.id}>
-                  <label className="label">Player {index}</label>
-                  <div className="control">
-                    <input className="input" name={player.id} value={player.name} onChange={this.changeHandler.bind(this, player)} />
+              <div className="columns" key={player.id}>
+                <div className="column">
+                  <div className="field">
+                    <h4 className="has-text-white has-text-centered">Player {index}</h4>
+                    <div className="control">
+                      <input className="input" name={player.id} value={player.name} onChange={this.changeHandler.bind(this, player)} />
+                    </div>
                   </div>
                 </div>
+              </div>
               )}
             <a className="button is-primary is-outlined is-large is-fullwidth is-inverted" onClick={ () => createPlayer() }>
               New Player
