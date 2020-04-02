@@ -6,9 +6,9 @@ import '../App.css'
 @observer 
 export default class RecordShow extends Component {
   render() {
-    const { gameStore, playerStore } = this.props.stores;
+    const { matchStore, playerStore } = this.props.stores;
     const records = 
-    [...Array(gameStore.rounds)].map((_, round) => (
+    [...Array(matchStore.rounds)].map((_, round) => (
       <tr>
         <td>{round}</td>
         {playerStore.players.map((player) => (

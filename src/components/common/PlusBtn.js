@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react';
 
-@observer
 export default class PlusBtn extends Component {
   constructor(props){
     super(props);
@@ -9,7 +8,7 @@ export default class PlusBtn extends Component {
   render() {
     return (
       <div
-      onClick={() => this.props.formdata.updateByAmount(this.props.target, this.props.amount)}
+      onClick={this.props.clickEvent}
       className="button is-rounded is-info is-inverted is-outlined">
         {this.props.amount}
       </div>

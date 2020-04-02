@@ -1,11 +1,11 @@
 import PlayerStore from './PlayerStore';
 import UIStore from './UIStore';
-import GameStore from './GameStore';
+import MatchStore from './MatchStore';
 
 export default class RootStore {
   constructor() {
-    this.playerStore = new PlayerStore(this)
-    this.uiStore = new UIStore(this)
-    this.gameStore= new GameStore(this)
+    this.playerStore = new PlayerStore()
+    this.uiStore = new UIStore()
+    this.matchStore= new MatchStore(this.uiStore)
   }
 }

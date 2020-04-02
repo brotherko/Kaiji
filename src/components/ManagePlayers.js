@@ -9,8 +9,12 @@ export default class PlayerCreate extends Component {
       name: event.target.value
     })
   }
+  createPlayer = () => {
+    const newPlayerId = this.props.stores.playerStore.createPlayer();
+    this.props.stores.uiStore.addPlayerToMatchFormdata(newPlayerId)
+  }
   render() {
-    const { players, createPlayer } = this.props.stores.playerStore;
+    const { playerStore } = this.props.stores;
     return (
       <section id="manage-players" className="hero is-primary is-fullheight">
         <div className="hero-body">
@@ -22,19 +26,19 @@ export default class PlayerCreate extends Component {
               Add, edit and remove players
             </h2>
             <div className="content">
-              {players.map((player, index) => 
+              {playerStore.players.map((player, index) => 
               <div className="columns" key={player.id}>
                 <div className="column">
                   <div className="field">
                     <h4 className="has-text-white has-text-centered">Player {index}</h4>
                     <div className="control">
-                      <input className="input" name={player.id} value={player.name} onChange={this.changeHandler.bind(this, player)} />
+                      <input className="input" name={player.id} value={player.name} onChange={() => this.changeHandler(player)} />
                     </div>
                   </div>
                 </div>
               </div>
               )}
-            <a className="button is-primary is-outlined is-large is-fullwidth is-inverted" onClick={ () => createPlayer() }>
+            <a className="button is-primary is-outlined is-large is-fullwidth is-inverted" onClick={ () => this.createPlayer() }>
               New Player
             </a>
             </div>

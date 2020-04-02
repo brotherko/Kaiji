@@ -1,30 +1,24 @@
-import { observable } from "mobx";
+import { observable, action } from "mobx";
 import Player from '../models/Player';
 
 export default class PlayerStore {
   @observable players = []
   @observable playersCounter = 0
 
-  constructor(rootStore){
-    this.rootStore = rootStore
-  }
-
+  @action
   getPlayer = (id) => {
     id = parseInt(id, 10)
     return this.players.find((player) => {
       return player.id === id
     })
   }
-
+  
+  @action
   createPlayer = () => {
-    this.rootStore.uiStore.recordCreateFormdata.add(this.playersCounter, 0)
-
-    this.players.push(new Player({
-      id: this.playersCounter,
-      name: `Player ${this.playersCounter}`,
-      root: this
-    }))
+    const newPlayerId = this.playersCounter
+    this.players.push(new Player(newPlayerId, `Player ${this.playersCounter}`))
     this.playersCounter += 1;
+    return newPlayerId
   }
 
 }
