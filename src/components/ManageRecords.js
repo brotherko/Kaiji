@@ -13,8 +13,6 @@ export default class RecordCreate extends Component {
 
   addMatch = () => {
     this.props.stores.matchStore.addMatch()
-    this.props.stores.uiStore.matchFormdata.clear(0);
-    this.props.stores.uiStore.setCurrentScreen('statistics');
   }
 
   render() {

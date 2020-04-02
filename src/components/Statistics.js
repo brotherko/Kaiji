@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { observer, inject } from 'mobx-react';
 import '../App.css'
+import UIStore from '../stores/UIStore';
 
 @inject("stores")
 @observer 
@@ -8,24 +9,22 @@ export default class RecordShow extends Component {
   render() {
     const { matchStore, playerStore } = this.props.stores;
     const records = 
-    [...Array(matchStore.rounds)].map((_, round) => (
+    matchStore.matches.map((match, round) => (
       <tr>
         <td>{round}</td>
-        {playerStore.players.map((player) => (
-          <td>{typeof(player.records[round] === 'number') ?
-          player.records[round] :
-          '//'}</td>
+        {playerStore.players.map(player => (
+          <td>{match[player.id]}</td>
         ))}
       </tr>
     ))
     const name = playerStore.players.map((player) => (
       <td key={player.id}>{player.name}</td>
     ))
-    const score = playerStore.players.map((player) => (
-      <td key={player.id}>{player.score}</td>
+    const score = matchStore.score.map((score, idx) => (
+      <td key={"score_" + idx}>{score}</td>
     ))
-    const pnl = playerStore.players.map((player) => (
-      <td key={player.id}>{player.pnl}</td>
+    const pnl = matchStore.pnl.map((score, idx) => (
+      <td key={"pnl_" + idx}>{score}</td>
     ))
 
     return (

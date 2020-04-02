@@ -11,7 +11,7 @@ export default class PlayerCreate extends Component {
   }
   createPlayer = () => {
     const newPlayerId = this.props.stores.playerStore.createPlayer();
-    this.props.stores.uiStore.addPlayerToMatchFormdata(newPlayerId)
+    this.props.stores.uiStore.addPlayerToMatchFormdata(newPlayerId, 0)
   }
   render() {
     const { playerStore } = this.props.stores;
@@ -32,7 +32,7 @@ export default class PlayerCreate extends Component {
                   <div className="field">
                     <h4 className="has-text-white has-text-centered">Player {index}</h4>
                     <div className="control">
-                      <input className="input" name={player.id} value={player.name} onChange={() => this.changeHandler(player)} />
+                      <input className="input" name={player.id} value={player.name} onChange={(e) => this.changeHandler(player, e)} />
                     </div>
                   </div>
                 </div>
