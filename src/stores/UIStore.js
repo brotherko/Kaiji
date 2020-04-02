@@ -13,12 +13,4 @@ export default class UIStore {
   setCurrentScreen = (screen) => {
     this.currentScreen = screen;
   }
-
-  addMessage = (message) => {
-    this.messages = [message]
-  }
-
-  clearMessage = () => {
-    this.messages = [];
-  }
 }

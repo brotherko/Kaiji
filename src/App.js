@@ -4,8 +4,6 @@ import Nav from './components/Nav';
 import ManagePlayers from './components/ManagePlayers';
 import ManageRecords from './components/ManageRecords';
 import Statistics from './components/Statistics';
-import Settings from './components/Settings';
-import MessageBox from './components/MessageBox';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -21,9 +19,6 @@ class App extends Component {
     const { uiStore } = this.props.stores;
     return (
       <div>
-        {this.props.stores.uiStore.messages.length > 0 &&
-          <MessageBox />
-        }
         <Nav />
         {uiStore.currentScreen == 'managePlayers' &&
         <ManagePlayers />
@@ -33,9 +28,6 @@ class App extends Component {
         }
         {uiStore.currentScreen == 'statistics' &&
         <Statistics />
-        }
-        {uiStore.currentScreen == 'settings' &&
-        <Settings />
         }
       </div>
     );

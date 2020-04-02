@@ -13,14 +13,6 @@ export default class GameStore {
     this.rootStore = rootStore
   }
 
-  nextRound = () => {
-    this.rounds += 1;
-  }
-
-  toggleRule = (ruleName) => {
-    this.rules[ruleName] = !this.rules[ruleName];
-  }
-
   createRecords = () => {
     const fields = this.rootStore.uiStore.recordCreateFormdata.fields;
 
@@ -30,6 +22,6 @@ export default class GameStore {
 
     this.rootStore.uiStore.recordCreateFormdata.clear(0);
     this.rootStore.uiStore.setCurrentScreen('statistics');
-    this.nextRound();
+    this.round += 1
   };
 }

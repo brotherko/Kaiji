@@ -6,6 +6,14 @@ export default class Player {
   @observable rawRecords = [];
   @observable root;
 
+  constructor(playerObj){
+    this.id = playerObj.id;
+    this.name = playerObj.name;
+    this.root = playerObj.root;
+
+    this.rules = this.root.rootStore.gameStore.rules;
+  }
+
   @computed get records() {
     return this.rawRecords.map((record) => 
     ((record === 13 && this.rules.tripleChao) ? 
@@ -14,6 +22,7 @@ export default class Player {
         record*2 :
         record))
   }
+
   @computed get score() {
     return (this.rules.scoring === 'diff') ?
     Object
@@ -36,13 +45,6 @@ export default class Player {
 
   @computed get pnl() {
     return this.score * this.rules.dollarsPerCard;
-  }
-  constructor(playerObj){
-    this.id = playerObj.id;
-    this.name = playerObj.name;
-    this.root = playerObj.root;
-
-    this.rules = this.root.rootStore.gameStore.rules;
   }
 
   addRecord(rounds, cards) {
