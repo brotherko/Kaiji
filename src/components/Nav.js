@@ -41,6 +41,16 @@ export default class Nav extends Component {
                 </span>
               </a>
             </li>
+            <li>
+              <a
+                className="is-light"
+                onClick={() => uiStore.setCurrentScreen("settings")}
+              >
+                <span className="icon is-small">
+                  <FontAwesomeIcon icon="sliders-h" />
+                </span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>

@@ -4,7 +4,7 @@ import Nav from "./components/Nav";
 import ManagePlayers from "./components/ManagePlayers";
 import ManageMatches from "./components/ManageMatches";
 import Statistics from "./components/Statistics";
-
+import Settings from "./components/Settings";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 
@@ -23,6 +23,7 @@ class App extends Component {
         {uiStore.currentScreen == "managePlayers" && <ManagePlayers />}
         {uiStore.currentScreen == "manageMatches" && <ManageMatches />}
         {uiStore.currentScreen == "statistics" && <Statistics />}
+        {uiStore.currentScreen == "settings" && <Settings />}
       </div>
     );
   }
