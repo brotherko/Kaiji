@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
+import { GamemodeEnum, ScoringEnum } from "../enums/enums";
 
 import Toggle from "./common/Toggle";
 
@@ -16,17 +17,48 @@ export default class Settings extends Component {
             <h2 className="subtitle">Change the game settings</h2>
             <div className="content">
               <h4>Game Rules</h4>
-              <h6>Scoring System</h6>
+              <h6>Game Mode</h6>
               <div className="columns is-mobile is-centered has-text-centered">
                 <div className="column has-text-centered">
                   <a
                     className={
-                      (matchStore.rules.scoring === "winner"
+                      (matchStore.rules.mode === GamemodeEnum.FOURPLAYERS
                         ? "is-info "
                         : "") + "button is-rounded"
                     }
                     onClick={() => {
-                      matchStore.rules.scoring = "winner";
+                      matchStore.rules.mode = GamemodeEnum.FOURPLAYERS;
+                    }}
+                  >
+                    13 Cards
+                  </a>
+                </div>
+                <div className="column has-text-centered">
+                  <a
+                    className={
+                      (matchStore.rules.mode === GamemodeEnum.THREEPLAYERS
+                        ? "is-info "
+                        : "") + "button is-rounded"
+                    }
+                    onClick={() => {
+                      matchStore.rules.mode = GamemodeEnum.THREEPLAYERS;
+                    }}
+                  >
+                    17 Cards
+                  </a>
+                </div>
+              </div>
+              <h6>Scoring Model</h6>
+              <div className="columns is-mobile is-centered has-text-centered">
+                <div className="column has-text-centered">
+                  <a
+                    className={
+                      (matchStore.rules.scoring === ScoringEnum.WINNER
+                        ? "is-info "
+                        : "") + "button is-rounded"
+                    }
+                    onClick={() => {
+                      matchStore.rules.scoring = ScoringEnum.WINNE;
                     }}
                   >
                     Winner takes all
@@ -35,11 +67,12 @@ export default class Settings extends Component {
                 <div className="column has-text-centered">
                   <a
                     className={
-                      (matchStore.rules.scoring === "diff" ? "is-info " : "") +
-                      "button is-rounded"
+                      (matchStore.rules.scoring === ScoringEnum.DIFF
+                        ? "is-info "
+                        : "") + "button is-rounded"
                     }
                     onClick={() => {
-                      matchStore.rules.scoring = "diff";
+                      matchStore.rules.scoring = ScoringEnum.DIFF;
                     }}
                   >
                     Diff by players
