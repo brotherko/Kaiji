@@ -1,20 +1,22 @@
 import { observable, action, toJS, computed } from "mobx";
-import { GamemodeEnum, ScoringEnum } from "../enums/enums";
-
+import { GamemodeEnum, ScoringEnum } from "../constants/enums";
+import { defaultRules } from "../constants/games";
 export default class MatchStore {
   @observable rounds = 0;
-  @observable rules = {
-    mode: GamemodeEnum.FOURPLAYERS,
-    dollarsPerCard: 1,
-    doubleChao: 10,
-    tripleChao: 13,
-    scoring: ScoringEnum.DIFF,
-  };
+  @observable mode = GamemodeEnum.FOURPLAYERS;
+  @observable customRules = {};
 
   @observable matches = [];
 
   constructor(rootStore) {
     this.rootStore = rootStore;
+  }
+
+  @computed get rules() {
+    return {
+      ...defaultRules[this.mode],
+      ...this.customRules,
+    };
   }
 
   @computed get matchesAfterChao() {

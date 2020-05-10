@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { observer, inject } from "mobx-react";
-import { GamemodeEnum, ScoringEnum } from "../enums/enums";
+import { GamemodeEnum, ScoringEnum } from "../constants/enums";
 
 import Toggle from "./common/Toggle";
 
@@ -22,12 +22,12 @@ export default class Settings extends Component {
                 <div className="column has-text-centered">
                   <a
                     className={
-                      (matchStore.rules.mode === GamemodeEnum.FOURPLAYERS
+                      (matchStore.mode === GamemodeEnum.FOURPLAYERS
                         ? "is-info "
                         : "") + "button is-rounded"
                     }
                     onClick={() => {
-                      matchStore.rules.mode = GamemodeEnum.FOURPLAYERS;
+                      matchStore.mode = GamemodeEnum.FOURPLAYERS;
                     }}
                   >
                     13 Cards
@@ -36,12 +36,12 @@ export default class Settings extends Component {
                 <div className="column has-text-centered">
                   <a
                     className={
-                      (matchStore.rules.mode === GamemodeEnum.THREEPLAYERS
+                      (matchStore.mode === GamemodeEnum.THREEPLAYERS
                         ? "is-info "
                         : "") + "button is-rounded"
                     }
                     onClick={() => {
-                      matchStore.rules.mode = GamemodeEnum.THREEPLAYERS;
+                      matchStore.mode = GamemodeEnum.THREEPLAYERS;
                     }}
                   >
                     17 Cards
@@ -58,7 +58,7 @@ export default class Settings extends Component {
                         : "") + "button is-rounded"
                     }
                     onClick={() => {
-                      matchStore.rules.scoring = ScoringEnum.WINNE;
+                      matchStore.customRules.scoring = ScoringEnum.WINNER;
                     }}
                   >
                     Winner takes all
@@ -72,7 +72,7 @@ export default class Settings extends Component {
                         : "") + "button is-rounded"
                     }
                     onClick={() => {
-                      matchStore.rules.scoring = ScoringEnum.DIFF;
+                      matchStore.customRules.scoring = ScoringEnum.DIFF;
                     }}
                   >
                     Diff by players
@@ -88,7 +88,8 @@ export default class Settings extends Component {
                         className="input"
                         value={matchStore.rules.dollarsPerCard}
                         onChange={(event) => {
-                          matchStore.rules.dollarsPerCard = event.target.value;
+                          matchStore.customRules.dollarsPerCard =
+                            event.target.value;
                         }}
                       />
                     </div>
@@ -102,7 +103,7 @@ export default class Settings extends Component {
                     className="input"
                     value={matchStore.rules.doubleChao}
                     onChange={(event) => {
-                      matchStore.rules.doubleChao = event.target.value;
+                      matchStore.customRules.doubleChao = event.target.value;
                     }}
                   />
                 </div>
@@ -114,7 +115,7 @@ export default class Settings extends Component {
                     className="input"
                     value={matchStore.rules.tripleChao}
                     onChange={(event) => {
-                      matchStore.rules.tripleChao = event.target.value;
+                      matchStore.customRules.tripleChao = event.target.value;
                     }}
                   />
                 </div>
