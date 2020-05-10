@@ -65,20 +65,24 @@ export default class Settings extends Component {
               <div className="columns is-mobile">
                 <div className="column is-10">Double Chao</div>
                 <div className="column is-2">
-                  <Toggle
-                    onClick={() => matchStore.toggleRule("doubleChao")}
-                    name="doubleChao"
+                  <input
+                    className="input"
                     value={matchStore.rules.doubleChao}
+                    onChange={(event) => {
+                      matchStore.rules.doubleChao = event.target.value;
+                    }}
                   />
                 </div>
               </div>
               <div className="columns is-mobile">
                 <div className="column is-10">Triple Chao</div>
                 <div className="column is-2">
-                  <Toggle
-                    onClick={() => matchStore.toggleRule("tripleChao")}
-                    name="tripleChao"
+                  <input
+                    className="input"
                     value={matchStore.rules.tripleChao}
+                    onChange={(event) => {
+                      matchStore.rules.tripleChao = event.target.value;
+                    }}
                   />
                 </div>
               </div>
