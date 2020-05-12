@@ -5,7 +5,6 @@ export default class MatchStore {
   @observable rounds = 0;
   @observable mode = GamemodeEnum.FOURPLAYERS;
   @observable customRules = {};
-
   @observable matches = [];
 
   constructor(rootStore) {
@@ -35,6 +34,7 @@ export default class MatchStore {
       })
     );
   }
+
   @computed get score() {
     const noOfPlayers = this.rootStore.playerStore.playersCounter;
     return this.matchesAfterChao.reduce(
@@ -63,8 +63,8 @@ export default class MatchStore {
 
   @action
   addMatch() {
-    this.matches.push(toJS(this.rootStore.uiStore.matchFormdata.fields));
-    this.rootStore.uiStore.matchFormdata.clear(0);
+    this.matches.push(toJS(this.rootStore.matchformStore.fields));
+    this.rootStore.matchformStore.clear();
     this.rootStore.uiStore.setCurrentScreen("statistics");
   }
 }

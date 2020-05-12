@@ -15,8 +15,13 @@ export default class RecordCreate extends Component {
   };
 
   render() {
-    const { uiStore, playerStore, matchStore } = this.props.stores;
-    const { fields } = uiStore.matchFormdata;
+    const {
+      uiStore,
+      playerStore,
+      matchStore,
+      matchformStore,
+    } = this.props.stores;
+    const { fields } = matchformStore;
 
     const options = [...Array(matchStore.rules.cards + 1)].map((_, number) => (
       <option value={number}>{number}</option>
@@ -27,7 +32,7 @@ export default class RecordCreate extends Component {
         key={"Player" + playerId + amount}
         amount={amount}
         clickEvent={() =>
-          uiStore.updateFieldToMatchFormdata(playerId, parseInt(amount, 10))
+          matchformStore.updateByAmount(playerId, parseInt(amount, 10))
         }
       />
     );
@@ -59,7 +64,7 @@ export default class RecordCreate extends Component {
                           <select
                             className="is-expanded"
                             onChange={(event) =>
-                              uiStore.matchFormdata.update(
+                              matchformStore.update(
                                 event.target.name,
                                 parseInt(event.target.value)
                               )
