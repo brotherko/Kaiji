@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 import Nav from "./components/Nav";
-import ManagePlayers from "./components/ManagePlayers";
-import ManageMatches from "./components/ManageMatches";
+import CreateMatch from "./components/CreateMatch";
+import ManageMatch from "./components/ManageMatch";
 import Statistics from "./components/Statistics";
 import Settings from "./components/Settings";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -20,8 +20,8 @@ class App extends Component {
     return (
       <div>
         <Nav />
-        {uiStore.currentScreen == "managePlayers" && <ManagePlayers />}
-        {uiStore.currentScreen == "manageMatches" && <ManageMatches />}
+        {uiStore.currentScreen == "managePlayers" && <CreateMatch />}
+        {uiStore.currentScreen == "manageMatches" && <ManageMatch />}
         {uiStore.currentScreen == "statistics" && <Statistics />}
         {uiStore.currentScreen == "settings" && <Settings />}
       </div>
