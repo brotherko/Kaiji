@@ -1,7 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { observer, inject } from "mobx-react";
-import ManagePlayers from "./ManagePlayers";
-import Settings from "./Settings";
 import { GamemodeEnum, ScoringEnum } from "../constants/enums";
 
 @inject("stores")
@@ -10,20 +9,21 @@ export default class RecordCreate extends Component {
   constructor(props) {
     super(props);
   }
-  changeHandler = (player, event) => {
-    player.update({
-      name: event.target.value,
-    });
+  changeHandler = (id, event) => {
+    this.props.stores.matchStore.updatePlayer(id, event.target.value);
   };
   createPlayer = () => {
-    const newPlayerId = this.props.stores.playerStore.createPlayer();
+    const newPlayerId = this.props.stores.matchStore.addPlayer();
     this.props.stores.matchformStore.addPlayer(newPlayerId, 0);
+  };
+  createMatch = () => {
+    this.props.stores.matchStore.createMatch();
   };
   render() {
     const { playerStore, matchStore } = this.props.stores;
     return (
       <div>
-        <section class="hero is-primary">
+        <section class="hero is-primary is-fullheight">
           <div class="hero-body">
             <div class="container">
               <h1 class="title">Create new match</h1>
@@ -132,9 +132,17 @@ export default class RecordCreate extends Component {
                   </div>
                 </div>
 
-                <h4 className="subtitle">Players</h4>
-                {playerStore.players.map((player, index) => (
-                  <div className="column player" key={player.id}>
+                <div>
+                  <div className="is-pulled-left">
+                    <h4 className="subtitle">
+                      Players{" "}
+                      <span onClick={() => this.createPlayer()}>(+)</span>
+                    </h4>
+                  </div>
+                </div>
+                <div className="is-clearfix"></div>
+                {matchStore.players.map((playerName, index) => (
+                  <div className="column player" key={index}>
                     <div className="field">
                       <div>
                         <h4 className="has-text-white is-pulled-left">
@@ -145,19 +153,18 @@ export default class RecordCreate extends Component {
                       <div className="control">
                         <input
                           className="input"
-                          name={player.id}
-                          value={player.name}
-                          onChange={(e) => this.changeHandler(player, e)}
+                          value={playerName}
+                          onChange={(e) => this.changeHandler(index, e)}
                         />
                       </div>
                     </div>
                   </div>
                 ))}
                 <a
-                  className="button is-primary is-outlined is-large is-fullwidth is-inverted"
-                  onClick={() => this.createPlayer()}
+                  className="button is-info is-outlined is-large is-fullwidth is-inverted"
+                  onClick={() => this.createMatch()}
                 >
-                  New Player
+                  Create Match
                 </a>
               </div>
             </div>

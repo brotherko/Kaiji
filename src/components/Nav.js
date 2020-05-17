@@ -11,20 +11,20 @@ export default class Nav extends Component {
       <div>
         <div className="tabs is-toggle is-fullwidth">
           <ul>
-            <li className="is-active">
+            <li>
               <a
-                className="is-primary"
-                onClick={() => uiStore.setCurrentScreen("managePlayers")}
+                className="is-success"
+                onClick={() => uiStore.setCurrentScreen("createMatch")}
               >
                 <span className="icon is-small">
-                  <FontAwesomeIcon icon="users" />
+                  <FontAwesomeIcon icon="file-alt" />
                 </span>
               </a>
             </li>
             <li>
               <a
                 className="is-info"
-                onClick={() => uiStore.setCurrentScreen("manageMatches")}
+                onClick={() => uiStore.setCurrentScreen("manageMatch")}
               >
                 <span className="icon is-small">
                   <FontAwesomeIcon icon="file-alt" />
@@ -38,16 +38,6 @@ export default class Nav extends Component {
               >
                 <span className="icon is-small">
                   <FontAwesomeIcon icon="chart-bar" />
-                </span>
-              </a>
-            </li>
-            <li>
-              <a
-                className="is-light"
-                onClick={() => uiStore.setCurrentScreen("settings")}
-              >
-                <span className="icon is-small">
-                  <FontAwesomeIcon icon="sliders-h" />
                 </span>
               </a>
             </li>

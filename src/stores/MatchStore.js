@@ -1,14 +1,20 @@
-import { observable, action, toJS, computed } from "mobx";
+import { observable, action, toJS, computed, reaction } from "mobx";
 import { GamemodeEnum, ScoringEnum } from "../constants/enums";
 import { defaultRules } from "../constants/games";
+import { database } from "../firebase";
 export default class MatchStore {
-  @observable rounds = 0;
+  refId = null;
   @observable mode = GamemodeEnum.FOURPLAYERS;
   @observable customRules = {};
   @observable matches = [];
+  @observable players = [];
 
   constructor(rootStore) {
     this.rootStore = rootStore;
+  }
+
+  @computed get rounds() {
+    return this.matches.length + 1;
   }
 
   @computed get rules() {
@@ -17,6 +23,24 @@ export default class MatchStore {
       ...this.customRules,
     };
   }
+
+  @computed get asObject() {
+    return {
+      mode: this.mode,
+      customRules: toJS(this.customRules),
+      matches: toJS(this.matches),
+      players: toJS(this.players),
+    };
+  }
+
+  // matchSyncToFirebase = reaction(
+  //   () => this.asObject,
+  //   (object) => {
+  //     if (this.refId) {
+  //       database.ref(`/matches/${this.refId}`).set(object);
+  //     }
+  //   }
+  // );
 
   @computed get matchesAfterChao() {
     return this.matches.map((match) =>
@@ -67,4 +91,22 @@ export default class MatchStore {
     this.rootStore.matchformStore.clear();
     this.rootStore.uiStore.setCurrentScreen("statistics");
   }
+
+  @action
+  addPlayer = () => {
+    this.players.push(`Player ${this.players.length + 1}`);
+    return this.players.length - 1;
+  };
+
+  @action
+  updatePlayer = (id, name) => {
+    this.players[id] = name;
+  };
+
+  @action
+  createMatch = () => {
+    console.log("create match", this.asObject);
+    let ref = database.ref("/matches").push(this.asObject);
+    this.refId = ref.key;
+  };
 }
