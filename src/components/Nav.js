@@ -1,35 +1,29 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { inject, observer } from "mobx-react";
-
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+} from "react-router-dom";
 @inject("stores")
 @observer
 export default class Nav extends Component {
   render() {
+    const { id } = useParams();
     const { uiStore } = this.props.stores;
     return (
       <div>
         <div className="tabs is-toggle is-fullwidth">
           <ul>
             <li>
-              <a
-                className="is-success"
-                onClick={() => uiStore.setCurrentScreen("createMatch")}
-              >
+              <Link to={"/match/" + id + "manage"}
                 <span className="icon is-small">
                   <FontAwesomeIcon icon="file-alt" />
                 </span>
-              </a>
-            </li>
-            <li>
-              <a
-                className="is-info"
-                onClick={() => uiStore.setCurrentScreen("manageMatch")}
-              >
-                <span className="icon is-small">
-                  <FontAwesomeIcon icon="file-alt" />
-                </span>
-              </a>
+                </Link>
             </li>
             <li>
               <a
